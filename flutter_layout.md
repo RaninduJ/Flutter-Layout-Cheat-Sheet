@@ -63,3 +63,61 @@ A children property if they take a list of widgets – for example, Row, Column,
 Center(
   child: Text('Hello World'),
 ),
+
+Aligning widgets.
+You control how a row or column aligns its children using the mainAxisAlignment and crossAxisAlignment properties. For a row, the main axis runs horizontally and the cross axis runs vertically. For a column, the main axis runs vertically and the cross axis runs horizontally.
+
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset('images/pic1.jpg'),
+    Image.asset('images/pic2.jpg'),
+    Image.asset('images/pic3.jpg'),
+  ],
+);
+
+Columns work the same way as rows. The following example shows a column of 3 images, each is 100 pixels high. The height of the render box (in this case, the entire screen) is more than 300 pixels, so setting the main axis alignment to spaceEvenly divides the free vertical space evenly between, above, and below each image.
+
+Column(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset('images/pic1.jpg'),
+    Image.asset('images/pic2.jpg'),
+    Image.asset('images/pic3.jpg'),
+  ],
+);
+
+Sizing widgets
+
+When a layout is too large to fit a device, a yellow and black striped pattern appears along the affected edge. Here is an example of a row that is too wide.
+Widgets can be sized to fit within a row or column by using the Expanded widget. To fix the previous example where the row of images is too wide for its render box, wrap each image with an Expanded widget.
+
+Row(
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Expanded(
+      child: Image.asset('images/pic1.jpg'),
+    ),
+    Expanded(
+      child: Image.asset('images/pic2.jpg'),
+    ),
+    Expanded(
+      child: Image.asset('images/pic3.jpg'),
+    ),
+  ],
+);
+
+Packing widgets
+By default, a row or column occupies as much space along its main axis as possible, but if you want to pack the children closely together, set its mainAxisSize to MainAxisSize.min. The following example uses this property to pack the star icons together.
+
+Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.black),
+    Icon(Icons.star, color: Colors.black),
+  ],
+)
+
